@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
+
 import '../db/database_helper.dart';
 import '../models/category.dart';
 import '../models/quote.dart';
 import 'add_quote_screen.dart';
 import 'category_screen.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -179,10 +182,23 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 final quote = filteredQuotes[index];
                 return Card(
+                  color: Colors.white38,
                   elevation: 3,
                   child: ListTile(
                     title: Text(quote.quote),
-                    subtitle: Text(quote.category,style: const TextStyle(color: Colors.blue),),
+                    subtitle: Padding(
+                      padding: const EdgeInsets.only(top: 2),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(quote.category,style: const TextStyle(color: Colors.grey),),
+                          Text(
+                            DateFormat('dd/MM/yyyy - hh:mm a').format(quote.dateTime),
+                            style: const TextStyle(color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
