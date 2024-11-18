@@ -86,56 +86,55 @@ class _HomeScreenState extends State<HomeScreen> {
         iconTheme: const IconThemeData(color: Colors.white),
         title: const Text('MindSparks',style: TextStyle(color: Colors.white),),
         actions: [
-          if(allQuotes.isNotEmpty)
-            IconButton(
-              icon: const Icon(Icons.shuffle),
-              onPressed: () {
-                Quote randomQuote = getRandomQuote();
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text("Random Quote"),
-                        const SizedBox(width: 8,),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.copy),
-                              onPressed: () {
-                                if (randomQuote.quote.isNotEmpty) {
-                                  Clipboard.setData(ClipboardData(text: randomQuote.quote));
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text("Copied to clipboard!")),
-                                  );
-                                }
-                              },
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.share),
-                              onPressed: () {
-                                shareQuote(randomQuote.quote);
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    content: Text(randomQuote.quote),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text("Close"),
+          IconButton(
+            icon: const Icon(Icons.shuffle),
+            onPressed: () {
+              Quote randomQuote = getRandomQuote();
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Random Quote"),
+                      const SizedBox(width: 8,),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.copy),
+                            onPressed: () {
+                              if (randomQuote.quote.isNotEmpty) {
+                                Clipboard.setData(ClipboardData(text: randomQuote.quote));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text("Copied to clipboard!")),
+                                );
+                              }
+                            },
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.share),
+                            onPressed: () {
+                              shareQuote(randomQuote.quote);
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                );
-              },
-            ),
+                  content: Text(randomQuote.quote),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text("Close"),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.category),
             onPressed: () {
@@ -182,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 final quote = filteredQuotes[index];
                 return Card(
-                  color: Colors.white38,
+                  color: Colors.white30,
                   elevation: 3,
                   child: ListTile(
                     title: Text(quote.quote),
