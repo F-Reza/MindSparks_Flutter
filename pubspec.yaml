@@ -14,6 +14,8 @@ dependencies:
   sqflite:
   path_provider:
   share_plus:
+  shared_preferences:
+  flutter_native_splash:
 
 dev_dependencies:
   flutter_test:
@@ -23,9 +25,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - images/
 
   # fonts:
   #   - family: Schyler
